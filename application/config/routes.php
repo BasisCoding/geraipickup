@@ -53,4 +53,5 @@ $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['staff'] = 'staff/Dashboard';
+$route['staff'] = 'Dashboard';
+$route['company_profile'] = 'Company_Profile';

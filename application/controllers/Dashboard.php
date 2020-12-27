@@ -5,7 +5,7 @@
 	
 		public function index()
 		{
-			$def['title'] = 'STAFF | Dashboard';
+			$def['title'] = 'Dashboard | Aplikasi Akuntansi Berbasis Web';
 			
 			$this->load->view('partials/head', $def);
 			$this->load->view('partials/sidebar');

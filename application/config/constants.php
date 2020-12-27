@@ -92,5 +92,3 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 |-----------------------------------------------------------
 
 */
-define('SITE_NAME', 'BukuZilla');
-define('SITE_ICON', 'assets/favicon.ico');
