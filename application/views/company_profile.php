@@ -5,13 +5,13 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="panel panel-default">
-                                <div class="panel-body profile" style="background: url('assets/assets/images/gallery/space-2.jpg') center center no-repeat;">
+                                <div class="panel-body profile" style="background: black;">
                                     <div class="profile-image">
-                                        <img src="<?= base_url('assets/img/logo-square.png')?>" alt="Logo">
+                                        <img class="logo" src="" alt="Logo">
                                     </div>
                                     <div class="profile-data">
-                                        <div class="profile-data-name" style="color: #000; font-weight: bold">PT. FAJAR PANGAN LESTARI</div>
-                                        <div class="profile-data-title" style="color: #000;">Distributor Unilever</div>
+                                        <div class="profile-data-name" style="color: #07B378; font-weight: bold"></div>
+                                        <div class="profile-data-title" style="color: #07B378;"></div>
                                     </div>
                                     <div class="profile-controls">
                                         <a href="#" class="profile-control-left twitter"><span class="fa fa-twitter"></span></a>
@@ -29,9 +29,18 @@
                                     </div>
                                 </div>
                                 <div class="panel-body list-group border-bottom">
-                                    <a href="#" class="list-group-item active"><span class="fa fa-bar-chart-o"></span> Pimpinan <span class="badge badge-primary">Tantyo Nugroho</span></a>
-                                    <a href="#" class="list-group-item"><span class="fa fa-coffee"></span> Jumlah Karyawan <span class="badge badge-default">18</span></a>                                
-                                    <a href="#" class="list-group-item"><span class="fa fa-users"></span> Jumlah Produk <span class="badge badge-danger">+7</span></a>
+                                    <a href="#" class="list-group-item active">
+                                        <span class="fa fa-bar-chart-o"></span> Pimpinan 
+                                        <span class="badge badge-warning nama_direktur">Tantyo Nugroho</span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="fa fa-users"></span> Jumlah Karyawan 
+                                        <span class="badge badge-default jumlah_karyawan">18</span>
+                                    </a>                                
+                                    <a href="#" class="list-group-item">
+                                        <span class="fa fa-list"></span> Jumlah Produk 
+                                        <span class="badge badge-danger">+7</span>
+                                    </a>
                                 </div>  
                             </div>
                         </div>
