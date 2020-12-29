@@ -20,6 +20,22 @@
 	        			$('.profile-data-title').html(data.jenis_perusahaan);
 	        			$('.nama_direktur').html(data.nama_direktur);
 	        			$('.jumlah_karyawan').html(data.jumlah_karyawan);
+	        			$('.email').html(data.email);
+	        			$('.telepon').html(data.telepon);
+	        			$('.status').html(data.status);
+	        			$('.btn-email').attr('href', 'mailto:'+data.email);
+	        			$('.btn-telepon').attr('href', 'tel:'+data.telepon);
+
+	        			$('[name="nama_perusahaan"]').val(data.nama_perusahaan);
+	        			$('[name="jenis_perusahaan"]').val(data.jenis_perusahaan);
+	        			$('[name="nama_direktur"]').val(data.nama_direktur);
+	        			$('[name="status"]').val(data.status);
+	        			$('[name="tgl_pendirian"]').val(data.tgl_pendirian);
+	        			$('[name="jumlah_karyawan"]').val(data.jumlah_karyawan);
+	        			$('[name="email"]').val(data.email);
+	        			$('[name="telepon"]').val(data.telepon);
+	        			$('[name="alamat"]').val(data.alamat);
+	        			$('[name="logo_lama"]').val(data.logo);
 	        		});
 
 	        		return false;
