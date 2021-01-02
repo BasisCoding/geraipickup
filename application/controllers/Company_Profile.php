@@ -46,6 +46,47 @@
 
 			echo json_encode($data);
 		}
+
+		public function saveProfile()
+		{
+			$config['upload_path'] = './assets/img/';
+	        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+	        $config['max_size'] = '1024';
+	        $config['overwrite'] = true;
+	        $config['file_name'] = 'logo-square.png';
+	        $this->load->library('upload', $config);
+
+	        if($this->upload->do_upload("logo")){
+				$logo = $this->upload->file_name;
+			} else {
+				$logo = 'logo-square.png';
+			}
+
+			$data = array(
+	 			'nama_perusahaan' 			=> $this->input->post('nama_perusahaan'),
+	 			'jenis_perusahaan' 			=> $this->input->post('jenis_perusahaan'),
+	 			'nama_direktur' 			=> $this->input->post('nama_direktur'),
+	 			'email' 					=> $this->input->post('email'),
+	 			'telepon' 					=> $this->input->post('telepon'),
+	 			'alamat' 					=> $this->input->post('alamat'),
+	 			'tgl_pendirian' 			=> $this->input->post('tgl_pendirian'),
+	 			'jumlah_karyawan' 			=> $this->input->post('jumlah_karyawan'),
+	 			'tgl_pendirian' 			=> $this->input->post('tgl_pendirian'),
+	 			'status' 					=> $this->input->post('status'),
+	 			
+	 			'update_at' 				=> date('Y-m-d H:i:s'),
+	 			'logo' 						=> $logo
+				);
+
+			$data = $this->ProfileModel->update($data);
+			$response = array(
+				'status' => 'success',
+				'title' => 'SUKSES !!!',
+				'message' => 'Data Berhasil Di Simpan',
+			 );
+
+			echo json_encode($response);
+		}
 	
 	}
 	

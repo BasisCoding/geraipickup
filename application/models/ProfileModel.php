@@ -7,6 +7,11 @@
 		{
 			return $this->db->get_where('profile', array('id' => 1))->result();
 		}
+
+		function update($data)
+		{
+			$this->db->update('profile', $data, array('id' => 1));
+		}
 	
 	}
 	

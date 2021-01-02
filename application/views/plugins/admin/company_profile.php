@@ -7,6 +7,7 @@
             browseClass: "btn btn-danger",
             fileType: "any"
         });  
+
 		function view_profile() {
 	        $.ajax({
 	        	url: '<?= site_url("Company_profile/get_data") ?>',
@@ -36,12 +37,73 @@
 	        			$('[name="telepon"]').val(data.telepon);
 	        			$('[name="alamat"]').val(data.alamat);
 	        			$('[name="logo_lama"]').val(data.logo);
+
+	        			$('#form-profile input').attr('disabled', true);
+	        			$('#form-profile .btn-file').attr('disabled', true);
+	        			$('#form-profile select').attr('disabled', true);
+	        			$('#form-profile textarea').attr('disabled', true);
 	        		});
 
 	        		return false;
 	        	}
 	        });
 		}
+
+		$('#btn-ubah').click(function() {
+
+			$('#btn-form-profile').show('fast', function hideubah() {
+
+				$('#form-profile input').attr('disabled', false);
+				$('#form-profile .btn-file').attr('disabled', false);
+    			$('#form-profile select').attr('disabled', false);
+    			$('#form-profile textarea').attr('disabled', false);
+
+				$('#btn-ubah').hide('fast', function showcancel() {
+					$('#btn-cancel').show('fast');
+				});
+			});
+
+			$('#btn-cancel').click(function() {
+				$(this).hide('fast', function showubah() {
+					$('#btn-ubah').show('fast', function hidecancel() {
+						$('#btn-form-profile').hide('fast');
+						view_profile();
+					});
+				});
+			});
+
+		});
+
+		$('#form-profile').submit(function() {
+		   var data = new FormData(this);
+		    $.ajax({
+		        url: '<?= site_url("Company_Profile/saveProfile")?>',
+		        type: 'POST',
+		        dataType:'JSON',
+		        data: data,
+		        processData: false,
+		        contentType: false,
+		        beforeSend: function()
+                { 
+                    $("#btn-form-profile").attr('disabled', '');
+                    $("#btn-form-profile").html('<span class="glyphicon glyphicon-transfer"></span>   Sending ...');
+                },
+                success:function(response) {
+                    if (response.status == 'success') {
+                        $('.message-box-success').addClass('open');
+                        playAudio('alert');
+                        $('#configform')[0].reset();
+                    }else{
+                        $('.message-box-danger').addClass('open');
+                        playAudio('fail');
+                    }
+                    
+                    view_profile();
+                }
+		    });
+
+		    return true;
+		});
         
 	});
 </script>
