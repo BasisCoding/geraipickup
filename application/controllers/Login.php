@@ -19,7 +19,7 @@
 			$username 	= $this->input->post('username');
 			$password 	= hash('sha512', $this->input->post('password').config_item('encryption_key'));
 
-			$result = $this->UserModel->login($username, $password);
+			$result = $this->UserModel->login_admin($username, $password);
 			if ($result->num_rows() > 0) {
 				foreach ($result->result() as $rs) {
 					$data_session = array(

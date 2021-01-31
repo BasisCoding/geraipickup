@@ -53,5 +53,7 @@ $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['staff'] = 'Dashboard';
-$route['company_profile'] = 'Company_Profile';
+$route['admin'] = 'admin/Dashboard';
+$route['data_gerai'] = 'admin/Data_Gerai';
+$route['data_kurir'] = 'admin/Data_kurir';
+$route['permintaan_pickup'] = 'admin/Pickup/permintaan_pickup';

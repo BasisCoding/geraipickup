@@ -6,7 +6,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a target="_blank" href="<?= base_url('assets/index.html') ?>">BukuZilla<a>
+                        <a target="_blank" href="<?= base_url('assets/index.html') ?>">GPickUp<a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
