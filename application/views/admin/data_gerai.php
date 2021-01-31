@@ -12,10 +12,10 @@
                                         <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>                                  
                                     </ul>
                                 </div>
-                                <div class="panel-body panel-body-table">
+                                <div class="panel-body">
                                     
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-striped" id="table-gerai">
+                                        <table class="table table-bordered table-striped datatable" id="table-gerai">
                                             <thead>
                                                 <tr>
                                                     <th>Username</th>
@@ -26,9 +26,10 @@
                                                     <th>Alamat</th>
                                                     <th>Lokasi</th>
                                                     <th>Status</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="data-table-gerai"></tbody>
+                                            <tbody id="table-daftar-gerai"></tbody>
                                         </table>
                                     </div>
                                     

@@ -5,7 +5,7 @@
 	
 		function data_gerai()
 		{
-			
+			return $this->db->get('gerai')->result();
 		}
 	
 	}

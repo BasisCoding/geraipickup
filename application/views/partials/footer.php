@@ -25,23 +25,33 @@
         
     <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
-        <script type="text/javascript" src="<?= base_url('assets/js/plugins/jquery/jquery.min.js') ?>"></script>
-        <script type="text/javascript" src="<?= base_url('assets/js/plugins/jquery/jquery-ui.min.js') ?>"></script>
-        <script type="text/javascript" src="<?= base_url('assets/js/plugins/bootstrap/bootstrap.min.js') ?>"></script>        
+        <script type="text/javascript" src="<?= base_url('assets/js/plugins/jquery/jquery.min.js')?>"></script>
+        <script type="text/javascript" src="<?= base_url('assets/js/plugins/jquery/jquery-ui.min.js')?>"></script>
+        <script type="text/javascript" src="<?= base_url('assets/js/plugins/bootstrap/bootstrap.min.js')?>"></script>        
         <!-- END PLUGINS -->
-
+        <!-- <script type='text/javascript' src='<?= base_url("assets/js/plugins/inputmask/min/jquery.inputmask.bundle.min.js") ?>'></script> -->
         <!-- START THIS PAGE PLUGINS-->        
-        <script type="text/javascript" src="<?= base_url('assets/js/plugins/icheck/icheck.min.js') ?>"></script>        
-        <script type="text/javascript" src="<?= base_url('assets/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js') ?>"></script>
-        <script type="text/javascript" src="<?= base_url('assets/js/plugins/fileinput/fileinput.min.js') ?>"></script>
-        <script type="text/javascript" src="<?= base_url('assets/js/plugins/scrolltotop/scrolltopcontrol.js') ?>"></script>
-        
-        <!-- END THIS PAGE PLUGINS-->        
+        <script type="text/javascript" src="<?= base_url('assets/js/plugins/icheck/icheck.min.js')?>"></script>        
+        <script type="text/javascript" src="<?= base_url('assets/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js')?>"></script>
+        <script type="text/javascript" src="<?= base_url('assets/js/plugins/datatables/jquery.dataTables.min.js')?>"></script>  
+        <script type="text/javascript" src="<?= base_url('assets/js/plugins/scrolltotop/scrolltopcontrol.js')?>"></script>
 
-        <!-- START TEMPLATE -->
-        <script type="text/javascript" src="<?= base_url('assets/js/settings.js') ?>"></script>
-        
-        <script type="text/javascript" src="<?= base_url('assets/js/plugins.js') ?>"></script>        
-        <script type="text/javascript" src="<?= base_url('assets/js/actions.js') ?>"></script>
-        
-    <!-- END SCRIPTS -->    
+        <script type='text/javascript' src="<?= base_url('assets/js/plugins/noty/jquery.noty.js') ?>"></script>
+
+        <script type='text/javascript' src="<?= base_url('assets/js/plugins/noty/layouts/topRight.js')?>"></script>      
+        <script type='text/javascript' src="<?= base_url('assets/js/plugins/noty/themes/default.js') ?>"></script>
+
+       <!--  <script type="text/javascript">
+            $(function() {
+                $('.money').inputmask('decimal', { 
+                    prefix: " Rp ",
+                    groupSeparator: ".",
+                    placeholder: "0",
+                    numericInput: true,
+                    autoGroup: !0,
+                    digits: 0,
+                    removeMaskOnSubmit: true,
+                    autoUnmask: true,
+                });
+            });
+        </script> -->
