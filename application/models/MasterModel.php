@@ -7,6 +7,11 @@
 		{
 			return $this->db->get('gerai')->result();
 		}
+
+		function add_gerai($data)
+		{
+			$this->db->insert('gerai', $data);
+		}
 	
 	}
 	
