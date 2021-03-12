@@ -33,7 +33,6 @@
                                             <tbody id="table-daftar-gerai"></tbody>
                                         </table>
                                     </div>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -96,9 +95,15 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Foto Gerai</label><br/>
-                                        <input type="file" id="file-simple" name="foto">
-                                        </span>
+                                        <label>Koordinat</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" name="lat" id="lat" class="form-control" readonly="" placeholder="latitude">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="long" id="long" class="form-control" readonly="" placeholder="longitude">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -107,16 +112,90 @@
                                 <div class="panel-body panel-body-map">
                                     <div id="googleMap" style="width: 100%; height: 300px;"></div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="text" name="lat" id="lat" class="form-control" readonly="" placeholder="latitude">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" name="long" id="long" class="form-control" readonly="" placeholder="longitude">
-                                </div>
+                                
                             </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" type="button" id="btn-save-gerai">Save</button>
+                    </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal_update_gerai" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="defModalHead">Update Data Gerai</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-update-gerai" enctype="multipart/form-data" class="" method="POST">
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" name="username_update" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" name="email_update" class="form-control">
+                                        <span class="help-block">Pastikan Email Aktif</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Nama Gerai</label>
+                                        <input type="text" name="nama_gerai_update" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Nama Pemilik</label>
+                                        <input type="text" name="nama_pemilik_update" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    
+                                    <div class="form-group">
+                                        <label>HP</label>
+                                        <input type="number" name="hp_update" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Telepon</label>
+                                        <input type="number" name="telepon_update" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Alamat</label>
+                                        <textarea name="alamat_update" class="form-control"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Koordinat</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" name="lat_update" id="lat_update" class="form-control" readonly="" placeholder="latitude">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="long_update" id="long_update" class="form-control" readonly="" placeholder="longitude">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="panel-body panel-body-map">
+                                    <div id="googleMap_update" style="width: 100%; height: 300px;"></div>
+                                </div>
+                                
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="button" id="btn-update-gerai">Update</button>
                     </div>
                         </form>
                 </div>

@@ -20,9 +20,9 @@
         <div class="message-box message-box-success animated fadeIn" data-sound="alert" id="message-success">
             <div class="mb-container">
                 <div class="mb-middle">
-                    <div class="mb-title"><span class="fa fa-check"></span> SUKSES</div>
+                    <div class="mb-title"><span class="fa fa-check"></span> <span class="response-status"></span></div>
                     <div class="mb-content">
-                        <p>Selamat Pendaftaran Anda Berhasil Silahkan Cek Email</p>
+                        <p class="response-message"></p>
                     </div>
                     <div class="mb-footer">
                         <button class="btn btn-default btn-lg pull-right mb-control-close">Close</button>
@@ -31,12 +31,15 @@
             </div>
         </div>
 
-        <div class="message-box message-box-error animated fadeIn" data-sound="fail" id="message-success">
+        <div class="message-box message-box-error animated fadeIn" data-sound="fail" id="message-danger">
             <div class="mb-container">
                 <div class="mb-middle">
-                    <div class="mb-title"><span class="fa fa-check"></span> GAGAL</div>
+                    <div class="mb-title"><span class="fa fa-check"></span> <span class="response-status"></span></div>
                     <div class="mb-content">
-                        <p>Silahkan Coba Kembali Beberapa Saat</p>                    
+                        <p class="response-message"></p>                    
+                    </div>
+                    <div class="mb-footer">
+                        <button class="btn btn-default btn-lg pull-right mb-control-close">Close</button>
                     </div>
                 </div>
             </div>
@@ -68,43 +71,7 @@
         <script type='text/javascript' src="<?= base_url('assets/js/plugins/noty/themes/default.js') ?>"></script>
 
         <script src="https://maps.googleapis.com/maps/api/js"></script>
-        <script type="text/javascript">
-
-            var marker;
-            function taruhMarker(peta, posisiTitik){
-                
-               if( marker ){
-                  // pindahkan marker
-                  marker.setPosition(posisiTitik);
-                } else {
-                  // buat marker baru
-                  marker = new google.maps.Marker({
-                    position: posisiTitik,
-                    map: peta
-                  });
-                }
-
-                document.getElementById("lat").value = posisiTitik.lat();
-                document.getElementById("long").value = posisiTitik.lng();
-                
-            }
-
-            function initialize() {
-              var propertiPeta = {
-                center:new google.maps.LatLng(-6.1169772,106.149635),
-                zoom:15,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
-              };
-              
-              var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
-              
-              google.maps.event.addListener(peta, 'click', function(event) {
-                taruhMarker(this, event.latLng);
-              });
-            }
-
-            google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
+        
        <!--  <script type="text/javascript">
             $(function() {
                 $('.money').inputmask('decimal', { 
