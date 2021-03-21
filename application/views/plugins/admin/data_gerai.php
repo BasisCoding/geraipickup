@@ -110,18 +110,17 @@
 		                if (response.status == 'Success') {
 		                    $('.message-box-success').addClass('open');
 		                    playAudio('alert');
-		                    $('#form-update-gerai')[0].reset();
-                        	$("#btn-update-gerai").html('update');
+		                    setTimeout(function(){ 
+                              window.location.reload();
+                            }, 1000);
 
 		                }else{
 		                    $('.message-box-error').addClass('open');
-                        	$("#btn-update-gerai").html('update');
-                        	
+		                    setTimeout(function(){ 
+                              window.location.reload();
+                            }, 1000);
 		                    playAudio('fail');
 		                }
-                        $("#btn-update-gerai").attr('disabled', false);
-		                
-		                show_gerai();
 		            }
 
 				});
@@ -151,6 +150,10 @@
 		                            		}else{
 		                            			noty({text: response.message, layout: 'topRight', type: 'error'});
 		                            		}
+
+		                            		setTimeout(function(){ 
+				                              window.location.reload();
+				                            }, 1000);
 		                            	}
 		                            });
 	                        	}
@@ -231,9 +234,10 @@
             document.getElementById("long_update").value = posisiTitik.lng();   
         }
 
-        function initialize_update(lat, long) {
+        function initialize_update(lattitude, longitude) {
+
         	var propertiPeta = {
-			    center:new google.maps.LatLng(parseFloat(lat), parseFloat(long)),
+			    center:new google.maps.LatLng(-6.1169772,106.149635),
 			    zoom:9,
 			    mapTypeId:google.maps.MapTypeId.ROADMAP
 			};
@@ -242,9 +246,10 @@
 			  
 			  // membuat Marker
 			var marker_update = new google.maps.Marker({
-			    position: new google.maps.LatLng(parseFloat(lat), parseFloat(long)),
+			    position: new google.maps.LatLng(lattitude, longitude),
 			    map: peta_update,
 			    animation: google.maps.Animation.BOUNCE
+
 			});
 
 	        google.maps.event.addListener(peta_update, 'click', function(event) {

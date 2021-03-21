@@ -58,12 +58,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Username</label>
-                                        <input type="text" name="username" class="form-control">
+                                        <input type="text" name="username" class="form-control" required="">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" name="email" class="form-control">
+                                        <input type="email" name="email" class="form-control" required="">
                                         <span class="help-block">Pastikan Email Aktif</span>
                                     </div>
 
@@ -137,12 +137,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Username</label>
-                                        <input type="text" name="username_update" class="form-control">
+                                        <input type="text" name="username_update" class="form-control" readonly="">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" name="email_update" class="form-control">
+                                        <input type="email" name="email_update" class="form-control" readonly="">
                                         <span class="help-block">Pastikan Email Aktif</span>
                                     </div>
 

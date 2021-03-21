@@ -125,6 +125,7 @@
 		    	'lat' => $lat,
 		    	'long' => $long,
 		    	'password'	=> $password,
+		    	'status'	=> 1,
 		    	'created_at'	=> $created_at,
 		    	'created_by'	=> $created_by
 		    );
