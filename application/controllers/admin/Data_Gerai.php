@@ -52,6 +52,9 @@
                                 	data-namapemilik="'.$gt->nama_pemilik.'"  
                                 	data-email="'.$gt->email.'"  
                                 	data-hp="'.$gt->hp.'"  
+                                	data-prov="'.$gt->prov.'"  
+                                	data-kota="'.$gt->kota.'"  
+                                	data-kec="'.$gt->kec.'"  
                                 	data-telepon="'.$gt->telepon.'"  
                                 	data-alamat="'.$gt->alamat.'"  
                                 	data-lat="'.$gt->lat.'"  
@@ -91,6 +94,9 @@
 		    $nama_pemilik	= $this->input->post('nama_pemilik');
 		    $nama_gerai		= $this->input->post('nama_gerai');
 		    $hp				= $this->input->post('hp');
+		    $prov			= $this->input->post('prov');
+		    $kota			= $this->input->post('kota');
+		    $kec			= $this->input->post('kec');
 		    $telepon		= $this->input->post('telepon');
 		    $alamat			= $this->input->post('alamat');
 		    $lat			= $this->input->post('lat');
@@ -123,6 +129,9 @@
 		    	'telepon' => $telepon,
 		    	'alamat' => $alamat,
 		    	'lat' => $lat,
+		    	'prov' => $prov,
+		    	'kota' => $kota,
+		    	'kec' => $kec,
 		    	'long' => $long,
 		    	'password'	=> $password,
 		    	'status'	=> 1,
@@ -166,6 +175,9 @@
 		    $hp				= $this->input->post('hp_update');
 		    $telepon		= $this->input->post('telepon_update');
 		    $alamat			= $this->input->post('alamat_update');
+		    $prov			= $this->input->post('prov_update');
+		    $kota			= $this->input->post('kota_update');
+		    $kec			= $this->input->post('kec_update');
 		    $lat			= $this->input->post('lat_update');
 		    $long			= $this->input->post('long_update');
 		    $created_at		= date('Y-m-d H:i:s');
@@ -178,6 +190,9 @@
 		    	'telepon' => $telepon,
 		    	'alamat' => $alamat,
 		    	'lat' => $lat,
+		    	'prov' => $prov,
+		    	'kota' => $kota,
+		    	'kec' => $kec,
 		    	'long' => $long,
 		    	'created_at'	=> $created_at,
 		    	'created_by'	=> $created_by
