@@ -110,14 +110,14 @@
 
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Alamat</label>
                                         <textarea name="alamat" class="form-control"></textarea>
                                     </div>
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Koordinat</label>
                                         <div class="row">
@@ -192,17 +192,17 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Provinsi</label>
-                                        <select class="provinsi form-control" name="prov_update"></select>
+                                        <select class="provinsi form-control" required="" name="prov_update"></select>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Kota</label>
-                                        <select class="kota form-control" name="kota_update"></select>
+                                        <select class="kota form-control" required="" name="kota_update"></select>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Kecamatan</label>
-                                        <select class="kecamatan form-control" name="kec_update"></select>
+                                        <select class="kecamatan form-control" required="" name="kec_update"></select>
                                     </div>
                                 </div>
                             </div>
@@ -213,15 +213,16 @@
                                         <textarea name="alamat_update" class="form-control"></textarea>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label>Koordinat</label>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <input type="text" name="lat_update" id="lat_update" class="form-control" readonly="" placeholder="latitude">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" name="long_update" id="long_update" class="form-control" readonly="" placeholder="longitude">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Koordinat</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" name="lat_update" id="lat_update" class="form-control" readonly="" placeholder="latitude">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="long_update" id="long_update" class="form-control" readonly="" placeholder="longitude">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

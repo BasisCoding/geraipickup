@@ -13,8 +13,7 @@
 				.then(
 					function(response) {
 						if (response.status !== 200) {  
-					        console.warn('Looks like there was a problem. Status Code: ' + 
-					          response.status);  
+					        console.log('Looks like there was a problem. Status Code: ' + response.status);  
 					        return;  
 					      }
 
@@ -29,8 +28,8 @@
 				    console.error('Fetch Error -', err);  
 				});
 
-				$('#kota').attr('disabled', true);
-				$('#kecamatan').attr('disabled', true);
+				$('.kota').attr('disabled', true);
+				$('.kecamatan').attr('disabled', true);
 			}
 
 			function tampilKota(idProv) {
@@ -41,8 +40,7 @@
 				.then(
 					function(response) {
 						if (response.status !== 200) {  
-					        console.warn('Looks like there was a problem. Status Code: ' + 
-					          response.status);  
+					        console.log('Looks like there was a problem. Status Code: ' + response.status);  
 					        return;  
 					      }
 
@@ -66,8 +64,7 @@
 				.then(
 					function(response) {
 						if (response.status !== 200) {  
-					        console.warn('Looks like there was a problem. Status Code: ' + 
-					          response.status);  
+					        console.log('Looks like there was a problem. Status Code: ' + response.status);  
 					        return;  
 					      }
 
@@ -159,6 +156,7 @@
 
 			$('#table-daftar-gerai').on('click', '.update-data', function() {
 				
+				$('#form-update-gerai')[0].reset();
 				var username 		= $(this).attr('data-username');
 				var id 				= $(this).attr('data-id');
 				var email 			= $(this).attr('data-email');
@@ -182,10 +180,8 @@
 				$('[name="hp_update"]').val(hp);
 			
 				tampilKota(idProv);
-				tampilKecamatan(kota)
-				$('[name="prov_update"]').val(idProv);
-				$('[name="kota_update"]').val(kota);
-				$('[name="kec_update"]').val(kec);
+				tampilKecamatan(kota);
+				
 				$('[name="telepon_update"]').val(telepon);
 				$('[name="lat_update"]').val(lat);
 				$('[name="long_update"]').val(long);

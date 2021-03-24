@@ -145,8 +145,8 @@
 		      'subjek'=>$subjek,
 		      'content'=>$content,
 		    );
-
-		    $validasi = $this->MasterModel->validasi($username, $email_penerima);
+		    $table = 'gerai';
+		    $validasi = $this->MasterModel->validasi($username, $email_penerima, $table);
 		    if ($validasi->num_rows() > 0) {
 		    	$response = [
 		    	    'status' => 'Error',

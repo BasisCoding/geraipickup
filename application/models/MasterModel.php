@@ -8,10 +8,10 @@
 			return $this->db->get('gerai')->result();
 		}
 
-		function validasi($username, $email)
+		function validasi($username, $email, $table)
 		{
 			$this->db->select('username, email');
-			$this->db->from('gerai');
+			$this->db->from($table);
 			$this->db->where('username', $username);
 			$this->db->or_where('email', $email);
 			return $this->db->get();
@@ -30,6 +30,17 @@
 		function delete_gerai($id)
 		{
 			return $this->db->delete('gerai', array('id' => $id));
+		}
+
+
+		function data_kurir()
+		{
+			return $this->db->get('kurir')->result();
+		}
+
+		function add_kurir($data)
+		{
+			$this->db->insert('kurir', $data);
 		}
 	
 	}
