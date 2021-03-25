@@ -40,7 +40,7 @@
 							<td>'.$gt->email.'</td>
 							<td>'.$gt->nama_lengkap.'</td>
 							<td>'.$gt->hp.'</td>
-							<td>'.$gt->wilayah.'</td>
+							<td>'.$gt->kec.'</td>
 							<td>'.$status.'</td>
 							<td class="text-center">
                                 <button class="btn btn-default btn-sm update-data" 
@@ -49,7 +49,7 @@
                                 	data-nama_lengkap="'.$gt->nama_lengkap.'"  
                                 	data-email="'.$gt->email.'"  
                                 	data-hp="'.$gt->hp.'"  
-                                	data-wilayah="'.$gt->wilayah.'" 
+                                	data-kec="'.$gt->kec.'" 
                                 	data-status="'.$gt->status.'"
                                 ><span class="fa fa-pencil"></span></button>
                                 
@@ -140,6 +140,65 @@
 			    	];
 			    }
 		    }		    
+
+		    echo json_encode($response);
+		}
+
+		public function update_kurir()
+		{
+		    $username		= $this->input->post('username_update');
+		    $nama_lengkap	= $this->input->post('nama_lengkap_update');
+		    $hp				= $this->input->post('hp_update');
+		    $prov			= $this->input->post('prov_update');
+		    $kota			= $this->input->post('kota_update');
+		    $kec			= $this->input->post('kec_update');
+
+		    $created_at		= date('Y-m-d H:i:s');
+		    $created_by		= $this->session->userdata('id');
+
+		    $data = array(
+		    	'nama_lengkap' => $nama_lengkap,
+		    	'hp' => $hp,
+		    	'prov' => $prov,
+		    	'kota' => $kota,
+		    	'kec' => $kec,
+		    	'created_at'	=> $created_at,
+		    	'created_by'	=> $created_by
+		    );
+
+		    $update = $this->MasterModel->update_kurir($username, $data);
+		    if ($update) {
+		    	$response = [
+		    	    'status' => 'Success',
+		    	    'message' => 'Data Berhasil Diubah',
+		    	];
+		    }else{
+		    	$response = [
+		    	    'status' => 'Error',
+		    	    'message' => 'Data Gagal Diubah',
+		    	];
+		    }
+
+		    echo json_encode($response);
+		}
+
+		public function delete_kurir()
+		{
+			$id = $this->input->get('id');
+
+			$proses = $this->MasterModel->delete_kurir($id);
+
+			if ($proses) {
+		    	$response = [
+		    	    'status' => 'Success',
+		    	    'message' => 'Data Berhasil Dihapus',
+		    	];
+		    }else{
+		    	$response = [
+		    	    'status' => 'Error',
+		    	    'message' => 'Data Gagal Dihapus',
+		    	];
+		    }
 
 		    echo json_encode($response);
 		}

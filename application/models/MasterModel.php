@@ -3,6 +3,7 @@
 	
 	class MasterModel extends CI_Model {
 	
+	// Data Gerai
 		function data_gerai()
 		{
 			return $this->db->get('gerai')->result();
@@ -32,7 +33,9 @@
 			return $this->db->delete('gerai', array('id' => $id));
 		}
 
+	// Data Gerai
 
+	// Data Kurir
 		function data_kurir()
 		{
 			return $this->db->get('kurir')->result();
@@ -42,7 +45,17 @@
 		{
 			$this->db->insert('kurir', $data);
 		}
-	
+
+		function update_kurir($username, $data)
+		{
+			return $this->db->update('kurir', $data, array('username' => $username));
+		}
+
+		function delete_kurir($id)
+		{
+			return $this->db->delete('kurir', array('id' => $id));
+		}
+	// Data Kurir
 	}
 	
 	/* End of file MasterModel.php */

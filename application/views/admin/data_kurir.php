@@ -13,10 +13,10 @@
                                         <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>                                  
                                     </ul>
                                 </div>
-                                <div class="panel-body panel-body-table">
+                                <div class="panel-body">
                                     
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-striped" id="table-kurir">
+                                        <table class="table table-bordered table-striped datatable" id="table-kurir">
                                             <thead>
                                                 <tr>
                                                     <th>Username</th>
@@ -100,6 +100,69 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" type="button" id="btn-save-kurir">Save</button>
+                    </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal_update_kurir" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="defModalHead">Update Data Kurir</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-update-kurir" enctype="multipart/form-data" class="" method="POST">
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" name="username_update" class="form-control" required="" readonly="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" name="email_update" class="form-control" required="" readonly="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Nama Lengkap</label>
+                                        <input type="text" name="nama_lengkap_update" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>HP</label>
+                                        <input type="number" name="hp_update" class="form-control">
+                                    </div>
+
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    
+                                    <div class="form-group">
+                                        <label>Provinsi</label>
+                                        <select class="provinsi form-control" name="prov_update"></select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Kota</label>
+                                        <select class="kota form-control" name="kota_update"></select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Kecamatan</label>
+                                        <select class="kecamatan form-control" name="kec_update"></select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="button" id="btn-update-kurir">Save</button>
                     </div>
                         </form>
                 </div>

@@ -146,6 +146,110 @@
 			
 			return false;				
 		});
+
+		$('#table-daftar-kurir').on('click', '.update-data', function() {
+				
+				$('#form-update-kurir')[0].reset();
+				var id 				= $(this).attr('data-id');
+				var username 		= $(this).attr('data-username');
+				var email 			= $(this).attr('data-email');
+				var alamat 			= $(this).attr('data-alamat');
+				var nama_lengkap 	= $(this).attr('data-nama_lengkap');
+				var hp 				= $(this).attr('data-hp');
+				var idProv 			= $(this).attr('data-prov');
+				var kota 			= $(this).attr('data-kota');
+				var kec 			= $(this).attr('data-kec');
+				var status 			= $(this).attr('data-status');
+
+				$('[name="username_update"]').val(username);
+				$('[name="email_update"]').val(email);
+				$('[name="alamat_update"]').val(alamat);
+				$('[name="nama_lengkap_update"]').val(nama_lengkap);
+				$('[name="hp_update"]').val(hp);
+		
+
+				$('#modal_update_kurir').modal('show');
+			});
+
+		$('#btn-update-kurir').on('click', function() {
+
+			var data = $('#form-update-kurir').serialize();
+			$.ajax({
+				url: '<?= base_url("admin/Data_kurir/update_kurir") ?>',
+				type: 'POST',
+				dataType: 'JSON',
+				data:data,
+				beforeSend: function()
+                { 
+                    $("#btn-update-kurir").html('<span class="glyphicon glyphicon-transfer"></span>   sending ...');
+                    $("#btn-update-kurir").attr('disabled', true);
+                },
+				success:function(response) {
+	                $('#modal_update_kurir').modal('hide');
+                	$('.response-status').html(response.status);
+                	$('.response-message').html(response.message);
+	               
+	                if (response.status == 'Success') {
+	                    $('.message-box-success').addClass('open');
+	                    playAudio('alert');
+	                    setTimeout(function(){ 
+                          window.location.reload();
+                        }, 1000);
+
+	                }else{
+	                    $('.message-box-error').addClass('open');
+	                    setTimeout(function(){ 
+                          window.location.reload();
+                        }, 1000);
+	                    playAudio('fail');
+	                }
+	            }
+
+			});
+			
+			return false;				
+		});	
+
+		$('#table-daftar-kurir').on('click', '.delete-data', function() {
+			var id = $(this).attr('data-id');
+			var username = $(this).attr('data-username');
+			var nama_lengkap = $(this).attr('data-nama_lengkap');
+
+			noty({
+                text: 'Apakah Anda Yakin Ingin Menghapus Data '+nama_lengkap+' ?!?',
+                layout: 'topRight',
+                buttons: [{
+                        	addClass: 'btn btn-success btn-clean', text: 'Ok', onClick: function($noty) {
+	                            $noty.close();
+	                            $.ajax({
+	                            	url: '<?= base_url("admin/Data_Kurir/delete_kurir") ?>',
+	                            	type: 'GET',
+	                            	dataType: 'JSON',
+	                            	data:{id:id},
+	                            	success:function (response) {
+	                            		if (response.status = 'Success') {
+	                            			noty({text: response.message, layout: 'topRight', type: 'success'});
+	                            		}else{
+	                            			noty({text: response.message, layout: 'topRight', type: 'error'});
+	                            		}
+
+	                            		setTimeout(function(){ 
+			                              window.location.reload();
+			                            }, 1000);
+	                            	}
+	                            });
+                        	}
+                        },{
+                        	addClass: 'btn btn-danger btn-clean', text: 'Cancel', onClick: function($noty) {
+                            $noty.close();
+                            }
+                        }
+                    ]
+            });
+
+            show_kurir();
+		});
+
 	});
 </script>
 
