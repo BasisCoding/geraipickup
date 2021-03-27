@@ -8,14 +8,14 @@
 			$this->db->insert('users', $data);
 		}
 
-		function login_admin($username, $password)
+		function login_admin($username, $password, $level)
 		{
 			$this->db->select('*');
-			$this->db->from('admin');
-			$this->db->join('users_group', 'users_group.level = admin.level', 'left');
-			$this->db->where('admin.username', $username);
-			$this->db->where('admin.password', $password);
-			$this->db->where('admin.status', 1);
+			$this->db->from($level);
+			$this->db->join('users_group', 'users_group.level = '.$level.'.level', 'left');
+			$this->db->where($level.'.username', $username);
+			$this->db->where($level.'.password', $password);
+			$this->db->where($level.'.status', 1);
 			$this->db->limit(1);
 			return $this->db->get();
 		}

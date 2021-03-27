@@ -38,7 +38,7 @@
 				$html .= '<tr role="row" class="odd">
 							<td>'.$gt->username.'</td>
 							<td>'.$gt->nama_gerai.'</td>
-							<td>'.$gt->nama_pemilik.'</td>
+							<td>'.$gt->nama_lengkap.'</td>
 							<td>'.$gt->email.'</td>
 							<td>'.$gt->hp.'</td>
 							<td>'.substr($gt->alamat, 0, 20).'... </td>
@@ -49,7 +49,7 @@
                                 	data-id="'.$gt->id.'"
                                 	data-username="'.$gt->username.'"  
                                 	data-namagerai="'.$gt->nama_gerai.'"  
-                                	data-namapemilik="'.$gt->nama_pemilik.'"  
+                                	data-namapemilik="'.$gt->nama_lengkap.'"  
                                 	data-email="'.$gt->email.'"  
                                 	data-hp="'.$gt->hp.'"  
                                 	data-prov="'.$gt->prov.'"  
@@ -91,7 +91,7 @@
 			$this->load->library('Mailer');
 		    $email_penerima = $this->input->post('email');
 		    $username		= $this->input->post('username');
-		    $nama_pemilik	= $this->input->post('nama_pemilik');
+		    $nama_lengkap	= $this->input->post('nama_lengkap');
 		    $nama_gerai		= $this->input->post('nama_gerai');
 		    $hp				= $this->input->post('hp');
 		    $prov			= $this->input->post('prov');
@@ -110,7 +110,7 @@
 		    	'pesan' => $pesan,
 		    	'email'	=> $email_penerima,
 		    	'username'	=> $username,
-		    	'nama_pemilik' => $nama_pemilik,
+		    	'nama_lengkap' => $nama_lengkap,
 		    	'nama_gerai' => $nama_gerai,
 		    	'hp' => $hp,
 		    	'telepon' => $telepon,
@@ -123,7 +123,7 @@
 		    $data_insert = array(
 		    	'email'	=> $email_penerima,
 		    	'username'	=> $username,
-		    	'nama_pemilik' => $nama_pemilik,
+		    	'nama_lengkap' => $nama_lengkap,
 		    	'nama_gerai' => $nama_gerai,
 		    	'hp' => $hp,
 		    	'telepon' => $telepon,
@@ -133,7 +133,7 @@
 		    	'kota' => $kota,
 		    	'kec' => $kec,
 		    	'long' => $long,
-		    	'password'	=> $password,
+		    	'password'	=> hash('sha512', $password.config_item('encryption_key')),
 		    	'status'	=> 1,
 		    	'created_at'	=> $created_at,
 		    	'created_by'	=> $created_by
@@ -170,7 +170,7 @@
 		public function update_gerai()
 		{
 		    $username		= $this->input->post('username_update');
-		    $nama_pemilik	= $this->input->post('nama_pemilik_update');
+		    $nama_lengkap	= $this->input->post('nama_lengkap_update');
 		    $nama_gerai		= $this->input->post('nama_gerai_update');
 		    $hp				= $this->input->post('hp_update');
 		    $telepon		= $this->input->post('telepon_update');
@@ -184,7 +184,7 @@
 		    $created_by		= $this->session->userdata('id');
 
 		    $data = array(
-		    	'nama_pemilik' => $nama_pemilik,
+		    	'nama_lengkap' => $nama_lengkap,
 		    	'nama_gerai' => $nama_gerai,
 		    	'hp' => $hp,
 		    	'telepon' => $telepon,

@@ -21,7 +21,7 @@
                                                 <tr>
                                                     <th>Username</th>
                                                     <th>Nama Gerai</th>
-                                                    <th>Nama Pemilik</th>
+                                                    <th>Nama Lengkap</th>
                                                     <th>Email</th>
                                                     <th>HP</th>
                                                     <th>Alamat</th>
@@ -75,8 +75,8 @@
                                 <div class="col-md-4">
 
                                     <div class="form-group">
-                                        <label>Nama Pemilik</label>
-                                        <input type="text" name="nama_pemilik" class="form-control">
+                                        <label>Nama Lengkap</label>
+                                        <input type="text" name="nama_lengkap" class="form-control">
                                     </div>
                                     
                                     <div class="form-group">
@@ -175,8 +175,8 @@
                                 <div class="col-md-4">
                                     
                                     <div class="form-group">
-                                        <label>Nama Pemilik</label>
-                                        <input type="text" name="nama_pemilik_update" class="form-control">
+                                        <label>Nama Lengkap</label>
+                                        <input type="text" name="nama_lengkap_update" class="form-control">
                                     </div>
                                     
                                     <div class="form-group">

@@ -34,6 +34,16 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-md-12">
+                            <select class="form-control form-control-select" name="level">
+                                <option value="admin">Administrator</option>
+                                <option value="kurir">Kurir</option>
+                                <option value="gerai">Gerai</option>
+                                <option value="pimpinan">Pimpinan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
 
                         <div class="col-md-6 pull-right">
                             <button class="btn btn-info btn-block" id="btn-login">Log In</button>

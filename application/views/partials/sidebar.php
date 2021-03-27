@@ -15,7 +15,7 @@
                         </a>
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="<?= base_url('assets/assets/images/users/').$this->session->userdata('foto'); ?>" alt="<?= $this->session->userdata('nama_lengkap'); ?>"/>
+                                <img src="<?= base_url('assets/assets/images/users/fatoni.png')?>" alt="<?= $this->session->userdata('nama_lengkap'); ?>"/>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?= $this->session->userdata('nama_lengkap'); ?></div>

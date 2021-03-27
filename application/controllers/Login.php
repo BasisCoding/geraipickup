@@ -18,15 +18,15 @@
 		{
 			$username 	= $this->input->post('username');
 			$password 	= hash('sha512', $this->input->post('password').config_item('encryption_key'));
+			$level 		= $this->input->post('level'); 
 
-			$result = $this->UserModel->login_admin($username, $password);
+			$result = $this->UserModel->login_admin($username, $password, $level);
 			if ($result->num_rows() > 0) {
 				foreach ($result->result() as $rs) {
 					$data_session = array(
-						'nama_lengkap'	=> $rs->nama_user,
+						'nama_lengkap'	=> $rs->nama_lengkap,
 						'id'			=> $rs->id,
 						'level'			=> $rs->level,
-						'foto'			=> $rs->foto,
 						'nama_akses'	=> $rs->nama_group,
 						'link'			=> $rs->link,
 						'status' 		=> "login"
