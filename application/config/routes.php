@@ -53,7 +53,13 @@ $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['admin'] = 'admin/Dashboard';
-$route['data_gerai'] = 'admin/Data_Gerai';
-$route['data_kurir'] = 'admin/Data_kurir';
-$route['permintaan_pickup'] = 'admin/Pickup/permintaan_pickup';
+// Route Admin
+	$route['admin'] = 'admin/Dashboard';
+	$route['data_gerai'] = 'admin/Data_Gerai';
+	$route['data_kurir'] = 'admin/Data_kurir';
+	$route['permintaan_pickup'] = 'admin/Pickup/permintaan_pickup';
+// End Route Admin
+// Route Gerai
+	$route['gerai'] = 'gerai/Dashboard';
+	$route['profil'] = 'gerai/Profil';
+// End Route Gerai

@@ -110,6 +110,7 @@
 		    	'kota' => $kota,
 		    	'kec' => $kec,
 		    	'password'	=> hash('sha512', $password.config_item('encryption_key')),
+		    	'level'	=> 2,
 		    	'status'	=> 1,
 		    	'created_at'	=> $created_at,
 		    	'created_by'	=> $created_by

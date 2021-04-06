@@ -134,6 +134,7 @@
 		    	'kec' => $kec,
 		    	'long' => $long,
 		    	'password'	=> hash('sha512', $password.config_item('encryption_key')),
+		    	'level'	=> 3,
 		    	'status'	=> 1,
 		    	'created_at'	=> $created_at,
 		    	'created_by'	=> $created_by
