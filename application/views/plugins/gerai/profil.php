@@ -1,7 +1,6 @@
 <script type="text/javascript">
 	$(function() {
 		tampilProvinsi();
-
 	// Wilayah API
 		function tampilProvinsi() {
 			var provinsi = $('.provinsi');
@@ -104,7 +103,82 @@
 <!-- END SCRIPTS -->
 
 <script type="text/javascript">
+	get_profil();
+	function get_profil() {
+		$.ajax({
+			url: '<?= base_url("gerai/Profil/get_profil") ?>',
+			type: 'GET',
+			dataType: 'JSON',
+			success:function (data) {
+				$('[name="username_update"]').val(data.username);
+				$('[name="nama_lengkap_update"]').val(data.nama_lengkap);
+				$('[name="nama_gerai_update"]').val(data.nama_gerai);
+				$('[name="hp_update"]').val(data.hp);
+				$('[name="telepon_update"]').val(data.telepon);
+				$('[name="alamat_update"]').val(data.alamat);
+				$('[name="email_update"]').val(data.email);
+				$('[name="prov_update"]').val(data.prov);
+				$('[name="kota_update"]').val(data.kota);
+				$('[name="kec_update"]').val(data.kec);
+				$('[name="lat_update"]').val(data.lat);
+				$('[name="long_update"]').val(data.long);
 
+ 				// initialize(-6.106580806998822, 106.13933609945431);
+			}
+		});
+	}
+
+	$('#btn-update-gerai').on('click', function() {
+
+		noty({
+            text: 'Apakah Anda Yakin Ingin Mengubah Data ?!?',
+            layout: 'topRight',
+            buttons: [{
+                    	addClass: 'btn btn-success btn-clean', text: 'Ok', onClick: function($noty) {
+                            $noty.close();
+                            var data = $('#form-update-gerai').serialize();
+							$.ajax({
+								url: '<?= base_url("admin/Data_Gerai/update_gerai") ?>',
+								type: 'POST',
+								dataType: 'JSON',
+								data:data,
+								beforeSend: function()
+							    { 
+							        $("#btn-update-gerai").html('<span class="glyphicon glyphicon-transfer"></span>   sending ...');
+							        $("#btn-update-gerai").attr('disabled', true);
+							    },
+								success:function(response) {
+							    	$('.response-status').html(response.status);
+							    	$('.response-message').html(response.message);
+							       
+							        if (response.status == 'Success') {
+							            $('.message-box-success').addClass('open');
+							            playAudio('alert');
+							            setTimeout(function(){ 
+							              window.location.reload();
+							            }, 1000);
+
+							        }else{
+							            $('.message-box-error').addClass('open');
+							            setTimeout(function(){ 
+							              window.location.reload();
+							            }, 1000);
+							            playAudio('fail');
+
+							        }
+							    }
+							});
+                    	}
+                    },{
+                    	addClass: 'btn btn-danger btn-clean', text: 'Cancel', onClick: function($noty) {
+                        $noty.close();
+                        }
+                    }
+                ]
+        });
+
+		return false;				
+	});	
 // Add Gerai Map
     var marker;
 
@@ -127,71 +201,28 @@
     }
 
     function initialize() {
+		var lat = document.getElementById("lat").value;
+        var long = document.getElementById("long").value;
       var propertiPeta = {
-        center:new google.maps.LatLng(-6.1169772,106.149635),
+        center:new google.maps.LatLng(lat, long),
         zoom:15,
         mapTypeId:google.maps.MapTypeId.ROADMAP
       };
       
       var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
-      var peta_update = new google.maps.Map(document.getElementById("googleMap_update"), propertiPeta);
+      var marker = new google.maps.Marker({
+		    position: new google.maps.LatLng(lat, long),
+		    map: peta,
+		    animation: google.maps.Animation.BOUNCE
+		});
 
       google.maps.event.addListener(peta, 'click', function(event) {
         taruhMarker(this, event.latLng);
       });
-
-      google.maps.event.addListener(peta_update, 'click', function(event) {
-        taruhMarker(this, event.latLng);
-      });
     }
+    google.maps.event.addDomListener(window, 'load', initialize);
 // Add Gerai Map
-
-// Update Gerai Map
-    var marker_update;
-
-    function taruhMarkerUpdate(peta, posisiTitik){
-        
-       if( marker_update ){
-          // pindahkan marker
-          marker_update.setPosition(posisiTitik);
-        } else {
-          // buat marker baru
-          marker_update = new google.maps.Marker({
-            position: posisiTitik,
-            map: peta
-          });
-        }
-
-        document.getElementById("lat_update").value = posisiTitik.lat();
-        document.getElementById("long_update").value = posisiTitik.lng();   
-    }
-
-    function initialize_update(lattitude, longitude) {
-
-    	var propertiPeta = {
-		    center:new google.maps.LatLng(-6.1169772,106.149635),
-		    zoom:9,
-		    mapTypeId:google.maps.MapTypeId.ROADMAP
-		};
-		  
-		var peta_update = new google.maps.Map(document.getElementById("googleMap_update"), propertiPeta);
-		  
-		  // membuat Marker
-		var marker_update = new google.maps.Marker({
-		    position: new google.maps.LatLng(lattitude, longitude),
-		    map: peta_update,
-		    animation: google.maps.Animation.BOUNCE
-
-		});
-
-        google.maps.event.addListener(peta_update, 'click', function(event) {
-           taruhMarkerUpdate(this, event.latLng);
-        });
-    }
-// Update Gerai Map
-
-    // google.maps.event.addDomListener(window, 'load', initialize);
-    google.maps.event.addDomListener(window, 'load', initialize_update);
+    
 </script>
 
 </body>
