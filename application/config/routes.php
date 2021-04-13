@@ -62,4 +62,5 @@ $route['translate_uri_dashes'] = FALSE;
 // Route Gerai
 	$route['gerai'] = 'gerai/Dashboard';
 	$route['profil'] = 'gerai/Profil';
+	$route['data_pickup'] = 'gerai/Data_Pickup';
 // End Route Gerai
