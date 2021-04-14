@@ -47,6 +47,19 @@
 			$this->db->where('gerai.id', $id_gerai);
 			return $this->db->get()->row();
 		}
+
+		function get_pickup_from_kurir($id_kurir)
+		{
+			$this->db->select('pickup.*, gerai.*');
+			$this->db->join('gerai', 'gerai.id = pickup.id_gerai', 'left');	
+			$this->db->where('id_kurir', $id_kurir);
+			return $this->db->get('pickup')->result();
+		}
+
+		function ubah_status_pickup($kode, $data)
+		{
+			return $this->db->update('pickup', $data, array('kode_pickup' => $kode));
+		}
 	
 	}
 	

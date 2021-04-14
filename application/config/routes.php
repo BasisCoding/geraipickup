@@ -64,3 +64,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['profil'] = 'gerai/Profil';
 	$route['data_pickup'] = 'gerai/Data_Pickup';
 // End Route Gerai
+// Route Kurir
+	$route['kurir'] = 'kurir/Dashboard';
+	$route['data_pickup_kurir'] = 'kurir/Data_Pickup';
+// End Route Kurir

@@ -3,7 +3,7 @@
 			view_pickup();
 			function view_pickup() {
 				$.ajax({
-					url: '<?= base_url('gerai/Data_Pickup/get_pickup') ?>',
+					url: '<?= base_url('kurir/Data_Pickup/get_pickup') ?>',
 					type: 'POST',
 					async:false,
 					success:function (html) {
@@ -12,23 +12,20 @@
 				});
 			}
 
-			$('#modal_add_pickup').on('shown.bs.modal', function () {
-				$.ajax({
-					url: '<?= base_url("gerai/Data_Pickup/get_kode_pickup") ?>',
-					type: 'GET',
-					dataType: 'JSON',
-					success:function (data) {
-			    		$('[name="kode_pickup"]').val(data);
-					}
-				});
+			$('#table-daftar-pickup').on('click', '.siap_pickup', function() {
+				var kode_pickup = $(this).attr('data-kode');
+				var nama_gerai = $(this).attr('data-nama');
+
+				$('[name="kode_pickup"]').val(kode_pickup);
+				$('[name="nama_gerai"]').val(nama_gerai);
+				$('#modal_pickup').modal('show');
 			});
 
-			$('#btn-save-pickup').on('click', function() {
-
-				var data = $('#form-add-pickup').serialize();
+			$('#btn-pickup').on('click', function() {
+				var data = $('#form-pickup').serialize();
 				$.ajax({
-					url: '<?= base_url("gerai/Data_Pickup/add_pickup") ?>',
-					type: 'POST',
+					url: '<?= base_url('kurir/Data_Pickup/siap_pickup') ?>',
+					type: 'GET',
 					dataType: 'JSON',
 					data:data,
 					beforeSend: function()
@@ -37,43 +34,42 @@
                         $("#btn-save-pickup").attr('disabled', true);
                     },
 					success:function(response) {
-		                $('#modal_add_pickup').modal('hide');
+		                $('#modal_pickup').modal('hide');
 	                	$('.response-status').html(response.status);
 	                	$('.response-message').html(response.message);
 		               
 		                if (response.status == 'Success') {
 		                    $('.message-box-success').addClass('open');
 		                    playAudio('alert');
-		                    $('#form-add-pickup')[0].reset();
-                        	$("#btn-save-pickup").html('Save');
+		                    $('#form-pickup')[0].reset();
+                        	$("#btn-pickup").html('Save');
 
 		                }else{
 		                    $('.message-box-error').addClass('open');
-                        	$("#btn-save-pickup").html('Save');
+                        	$("#btn-pickup").html('Save');
                         	
 		                    playAudio('fail');
 		                }
-                        $("#btn-save-pickup").attr('disabled', false);
+                        $("#btn-pickup").attr('disabled', false);
 		                
 		                view_pickup();
 		            }
-
 				});
 				
-				return false;				
 			});
 
-			$('#table-daftar-pickup').on('click', '.konfirmasi_selesai', function() {
+			$('#table-daftar-pickup').on('click', '.selesai_pickup', function() {
 				var kode_pickup = $(this).attr('data-kode');
+				var nama_gerai = $(this).attr('data-nama');
 
 				noty({
-	                text: 'Apakah Kurir Kami Sudah Pickup Gerai Anda ?!?',
+	                text: 'Apakah Anda Sudah Pickup Gerai '+nama_gerai+' ?!?',
 	                layout: 'topRight',
 	                buttons: [{
 	                        	addClass: 'btn btn-success btn-clean', text: 'Sudah', onClick: function($noty) {
 		                            $noty.close();
 		                            $.ajax({
-		                            	url: '<?= base_url("gerai/Data_Pickup/konfirmasi_selesai") ?>',
+		                            	url: '<?= base_url("kurir/Data_Pickup/selesai_pickup") ?>',
 		                            	type: 'GET',
 		                            	dataType: 'JSON',
 		                            	data:{kode_pickup:kode_pickup},
@@ -100,6 +96,7 @@
 
 	            show_gerai();
 			});
+
 		});
 	</script>
 
