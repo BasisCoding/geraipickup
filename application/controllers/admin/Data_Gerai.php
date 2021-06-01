@@ -173,7 +173,8 @@
 		    $username		= $this->input->post('username_update');
 		    $nama_lengkap	= $this->input->post('nama_lengkap_update');
 		    $nama_gerai		= $this->input->post('nama_gerai_update');
-		    $hp				= $this->input->post('hp_update');
+		    $hp				= $this->input->post('hp_update'); 
+		    $password		= hash('sha512', $this->input->post('password_update').config_item('encryption_key'));
 		    $telepon		= $this->input->post('telepon_update');
 		    $alamat			= $this->input->post('alamat_update');
 		    $prov			= $this->input->post('prov_update');
@@ -188,6 +189,7 @@
 		    	'nama_lengkap' => $nama_lengkap,
 		    	'nama_gerai' => $nama_gerai,
 		    	'hp' => $hp,
+		    	'password' => $password,
 		    	'telepon' => $telepon,
 		    	'alamat' => $alamat,
 		    	'lat' => $lat,
