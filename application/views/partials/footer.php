@@ -59,17 +59,18 @@
         <!-- START THIS PAGE PLUGINS-->        
         <script type="text/javascript" src="<?= base_url('assets/js/plugins/icheck/icheck.min.js')?>"></script>        
         <script type="text/javascript" src="<?= base_url('assets/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js')?>"></script>
+        
         <script type="text/javascript" src="<?= base_url('assets/js/plugins/datatables/jquery.dataTables.min.js')?>"></script>
         <script type="text/javascript" src="<?= base_url('assets/js/plugins/fileinput/fileinput.min.js') ?>"></script>  
         <script type="text/javascript" src="<?= base_url('assets/js/plugins/scrolltotop/scrolltopcontrol.js')?>"></script>
-
+        <script type="text/javascript" src="<?= base_url('assets/js/plugins/owl/owl.carousel.min.js') ?>"></script>  
         <script type='text/javascript' src="<?= base_url('assets/js/plugins/noty/jquery.noty.js') ?>"></script>
 
         <script type='text/javascript' src="<?= base_url('assets/js/plugins/noty/layouts/topRight.js')?>"></script>      
         <script type='text/javascript' src="<?= base_url('assets/js/plugins/noty/themes/default.js') ?>"></script>
 
+
         <script src="https://maps.googleapis.com/maps/api/js"></script>
-        
        <!--  <script type="text/javascript">
             $(function() {
                 $('.money').inputmask('decimal', { 

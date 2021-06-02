@@ -54,21 +54,23 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 // Route Admin
-	$route['admin'] = 'admin/Dashboard';
+	$route['admin'] = 'Dashboard';
 	$route['data_gerai'] = 'admin/Data_Gerai';
 	$route['data_kurir'] = 'admin/Data_kurir';
 	$route['data_pickup_admin'] = 'admin/Pickup/data_pickup_admin';
 // End Route Admin
 // Route Gerai
-	$route['gerai'] = 'gerai/Dashboard';
+	$route['gerai'] = 'Dashboard';
 	$route['profil'] = 'gerai/Profil';
 	$route['data_pickup'] = 'gerai/Data_Pickup';
 // End Route Gerai
 // Route Kurir
-	$route['kurir'] = 'kurir/Dashboard';
+	$route['kurir'] = 'Dashboard';
 	$route['data_pickup_kurir'] = 'kurir/Data_Pickup';
 // End Route Kurir
 
 // Route Laporan
 	$route['laporan_gerai'] = 'Laporan/laporan_gerai';
+	$route['laporan_kurir'] = 'Laporan/laporan_kurir';
+	$route['semua_laporan'] = 'Laporan/semua_laporan';
 // End Route Laporan
