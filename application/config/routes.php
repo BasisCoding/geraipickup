@@ -57,7 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['admin'] = 'admin/Dashboard';
 	$route['data_gerai'] = 'admin/Data_Gerai';
 	$route['data_kurir'] = 'admin/Data_kurir';
-	$route['permintaan_pickup'] = 'admin/Pickup/permintaan_pickup';
+	$route['data_pickup_admin'] = 'admin/Pickup/data_pickup_admin';
 // End Route Admin
 // Route Gerai
 	$route['gerai'] = 'gerai/Dashboard';
@@ -68,3 +68,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['kurir'] = 'kurir/Dashboard';
 	$route['data_pickup_kurir'] = 'kurir/Data_Pickup';
 // End Route Kurir
+
+// Route Laporan
+	$route['laporan_gerai'] = 'Laporan/laporan_gerai';
+// End Route Laporan
