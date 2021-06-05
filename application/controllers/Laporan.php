@@ -22,13 +22,12 @@
 
 	        $pdf->SetFont('Arial','B',10);
 
-	        $pdf->Cell(35,6,'Nama Gerai : ',0,0,'C');
-
 	        $pdf->SetFont('Arial','',10);
 	        $gerai = $this->LaporanModel->get_gerai()->result();
 
 	        foreach ($gerai as $gr){
 	        	// Nama Gerai
+	        	$pdf->Cell(35,6,'Nama Gerai : ',0,0,'C');
 	            $pdf->Cell(35,6,$gr->nama_gerai,0,0);
 	        	$pdf->Cell(10,7,'',0,1);
 
@@ -78,13 +77,13 @@
 
 	        $pdf->SetFont('Arial','B',10);
 
-	        $pdf->Cell(30,6,'Nama Kurir : ',0,0,'L');
-
+	        
 	        $pdf->SetFont('Arial','',10);
 	        $kurir = $this->LaporanModel->get_kurir()->result();
 
 	        foreach ($kurir as $gr){
 	        	// Nama Gerai
+	        	$pdf->Cell(30,6,'Nama Kurir : ',0,0,'L');
 	            $pdf->Cell(30,6,$gr->nama_lengkap,0,0, 'L');
 	        	$pdf->Cell(10,7,'',0,1);
 

@@ -10,7 +10,7 @@
 
 		function login_admin($username, $password, $level)
 		{
-			$this->db->select('*');
+			$this->db->select($level.'.*, users_group.level, users_group.link, users_group.nama_group');
 			$this->db->from($level);
 			$this->db->join('users_group', 'users_group.level = '.$level.'.level', 'left');
 			$this->db->where($level.'.username', $username);

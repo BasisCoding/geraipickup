@@ -55,6 +55,12 @@
 			$password 	= hash('sha512', 'gerai'.config_item('encryption_key'));
 			echo $password;
 		}
+
+		public function logout()
+		{
+			$this->session->sess_destroy();
+			redirect(base_url('Login'),'refresh');
+		}
 		
 	}
 	
