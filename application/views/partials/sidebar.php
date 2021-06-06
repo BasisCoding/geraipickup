@@ -29,12 +29,12 @@
                     </li>
                     
                     <?php 
-                        $menu_title = $this->db->get_where('menus', array('sub_menu' => 1010, 'level' => $this->session->userdata('id')));
+                        $menu_title = $this->db->get_where('menus', array('sub_menu' => 1010, 'level' => $this->session->userdata('level')));
                         foreach ($menu_title->result() as $mt) {
                             echo '<li class="xn-title" style="background-color:black;">'.$mt->nama_menu.'</li>';
-                            $menu = $this->db->get_where('menus', array('sub_menu' => $mt->id, 'level' => $this->session->userdata('id')));
+                            $menu = $this->db->get_where('menus', array('sub_menu' => $mt->id, 'level' => $this->session->userdata('level')));
                             foreach ($menu->result() as $mn) {
-                                $sub_menu = $this->db->get_where('menus', array('sub_menu' => $mn->id, 'level' => $this->session->userdata('id')));
+                                $sub_menu = $this->db->get_where('menus', array('sub_menu' => $mn->id, 'level' => $this->session->userdata('level')));
                                 if ($sub_menu->num_rows() > 0) { ?>
                                     <li class="xn-openable">
                                         <a href="#"><span class="<?= $mn->icon ?>"></span>
