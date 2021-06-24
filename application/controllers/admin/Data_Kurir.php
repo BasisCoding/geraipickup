@@ -79,7 +79,6 @@
 
 		public function add_kurir()
 		{
-			$this->load->library('Mailer');
 		    $email_penerima = $this->input->post('email');
 		    $username		= $this->input->post('username');
 		    $nama_lengkap	= $this->input->post('nama_lengkap');
@@ -89,18 +88,8 @@
 		    $kec			= $this->input->post('kec');
 		    $created_at		= date('Y-m-d');
 		    $created_by		= $this->session->userdata('id');
-		    $password		= $this->password(5);
-		    $subjek = 'Pendaftaran Kurir Pickup';
-		    $pesan = 'Selamat Bergabung Dengan Agen Pickup Kami';
-		    $data = array(
-		    	'pesan' => $pesan,
-		    	'email'	=> $email_penerima,
-		    	'username'	=> $username,
-		    	'nama_lengkap' => $nama_lengkap,
-		    	'hp' => $hp,
-		    	'password'	=> $password
-		    );
-
+		    $password		= $this->input->post('password');
+		    
 		    $data_insert = array(
 		    	'email'	=> $email_penerima,
 		    	'username'	=> $username,
@@ -116,13 +105,6 @@
 		    	'created_by'	=> $created_by
 		    );
 
-		    $content = $this->load->view('message_kurir', $data, true); // Ambil isi file content.php dan masukan ke variabel $content
-		    $sendmail = array(
-		      'email_penerima'=>$email_penerima,
-		      'subjek'=>$subjek,
-		      'content'=>$content,
-		    );
-
 		    $table = 'kurir';
 		    $validasi = $this->MasterModel->validasi($username, $email_penerima, $table);
 		    if ($validasi->num_rows() > 0) {
@@ -132,7 +114,6 @@
 		    	];
 		    }else{
 			    $insert = $this->MasterModel->add_kurir($data_insert);
-			    $send = $this->mailer->send($sendmail); // Panggil fungsi send yang ada di librari Mailer
 			    
 			    if ($send) {
 			    	$response = [

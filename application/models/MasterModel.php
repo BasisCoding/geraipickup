@@ -9,6 +9,11 @@
 			return $this->db->get('gerai')->result();
 		}
 
+		function get_status($username)
+		{
+			return $this->db->get_where('gerai', array('username' => $username))->row();
+		}
+
 		function validasi($username, $email, $table)
 		{
 			$this->db->select('username, email');
@@ -20,7 +25,7 @@
 
 		function add_gerai($data)
 		{
-			$this->db->insert('gerai', $data);
+			return $this->db->insert('gerai', $data);
 		}
 
 		function update_gerai($username, $data)
@@ -43,7 +48,7 @@
 
 		function add_kurir($data)
 		{
-			$this->db->insert('kurir', $data);
+			return $this->db->insert('kurir', $data);
 		}
 
 		function update_kurir($username, $data)

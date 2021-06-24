@@ -69,6 +69,11 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['data_pickup_kurir'] = 'kurir/Data_Pickup';
 // End Route Kurir
 
+// Route Kurir
+	$route['pimpinan'] = 'Dashboard';
+	$route['data_gerai'] = 'pimpinan/Data_Gerai';
+// End Route Kurir
+
 // Route Laporan
 	$route['laporan_gerai'] = 'Laporan/laporan_gerai';
 	$route['laporan_kurir'] = 'Laporan/laporan_kurir';

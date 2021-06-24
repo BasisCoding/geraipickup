@@ -73,22 +73,8 @@
 			echo $html;
 		}
 
-		public function password($length)
-		{
-			$str = '';
-			$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";	
-
-			$size = strlen( $chars );
-			for( $i = 0; $i < $length; $i++ ) {
-				$str .= $chars[ rand( 0, $size - 1 ) ];
-			}
-
-			return $str;
-		}
-
 		public function add_gerai()
 		{
-			$this->load->library('Mailer');
 		    $email_penerima = $this->input->post('email');
 		    $username		= $this->input->post('username');
 		    $nama_lengkap	= $this->input->post('nama_lengkap');
@@ -101,25 +87,10 @@
 		    $alamat			= $this->input->post('alamat');
 		    $lat			= $this->input->post('lat');
 		    $long			= $this->input->post('long');
+		    $password		= $this->input->post('password');
 		    $created_at		= date('Y-m-d');
 		    $created_by		= $this->session->userdata('id');
-		    $password		= $this->password(5);
-		    $subjek = 'Pendaftaran Gerai';
-		    $pesan = 'Terima Kasih Sudah Mendaftar';
-		    $data = array(
-		    	'pesan' => $pesan,
-		    	'email'	=> $email_penerima,
-		    	'username'	=> $username,
-		    	'nama_lengkap' => $nama_lengkap,
-		    	'nama_gerai' => $nama_gerai,
-		    	'hp' => $hp,
-		    	'telepon' => $telepon,
-		    	'alamat' => $alamat,
-		    	'lat' => $lat,
-		    	'long' => $long,
-		    	'password'	=> $password
-		    );
-
+		   
 		    $data_insert = array(
 		    	'email'	=> $email_penerima,
 		    	'username'	=> $username,
@@ -135,17 +106,11 @@
 		    	'long' => $long,
 		    	'password'	=> hash('sha512', $password.config_item('encryption_key')),
 		    	'level'	=> 3,
-		    	'status'	=> 1,
+		    	'status'	=> 0,
 		    	'created_at'	=> $created_at,
 		    	'created_by'	=> $created_by
 		    );
 
-		    $content = $this->load->view('message', $data, true); // Ambil isi file content.php dan masukan ke variabel $content
-		    $sendmail = array(
-		      'email_penerima'=>$email_penerima,
-		      'subjek'=>$subjek,
-		      'content'=>$content,
-		    );
 		    $table = 'gerai';
 		    $validasi = $this->MasterModel->validasi($username, $email_penerima, $table);
 		    if ($validasi->num_rows() > 0) {
@@ -155,9 +120,8 @@
 		    	];
 		    }else{
 			    $insert = $this->MasterModel->add_gerai($data_insert);
-			    $send = $this->mailer->send($sendmail); // Panggil fungsi send yang ada di librari Mailer
 			    
-			    if ($send) {
+			    if ($insert) {
 			    	$response = [
 			    	    'status' => 'Success',
 			    	    'message' => 'Data Berhasil Di Simpan',

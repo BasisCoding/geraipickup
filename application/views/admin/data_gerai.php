@@ -61,6 +61,11 @@
                                         <input type="text" name="username" class="form-control" required="">
                                     </div>
 
+                                     <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="text" name="password" class="form-control" required="">
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="email" name="email" class="form-control" required="">
@@ -89,6 +94,10 @@
                                         <input type="number" name="telepon" class="form-control">
                                     </div>
 
+                                    <div class="form-group">
+                                        <label>Latitude</label>
+                                        <input type="text" name="lat" id="lat" class="form-control" readonly="" placeholder="latitude"> 
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     
@@ -106,6 +115,11 @@
                                         <label>Kecamatan</label>
                                         <select class="kecamatan form-control" name="kec"></select>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label>Longitude</label>
+                                        <input type="text" name="long" id="long" class="form-control" readonly="" placeholder="longitude">
+                                    </div>
                                 </div>
 
                             </div>
@@ -118,17 +132,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Koordinat</label>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <input type="text" name="lat" id="lat" class="form-control" readonly="" placeholder="latitude">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <input type="text" name="long" id="long" class="form-control" readonly="" placeholder="longitude">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
                             </div>
