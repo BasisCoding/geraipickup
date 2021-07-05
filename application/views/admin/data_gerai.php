@@ -124,17 +124,12 @@
 
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md">
                                     <div class="form-group">
                                         <label>Alamat</label>
                                         <textarea name="alamat" class="form-control"></textarea>
                                     </div>
                                 </div>
-
-                                <div class="col-md-6">
-                                    
-                                </div>
-
                             </div>
                             <div class="row">
                                 <div class="panel-body panel-body-map">

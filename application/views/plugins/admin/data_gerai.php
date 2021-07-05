@@ -269,7 +269,6 @@
 	            show_gerai();
 			});
 
-
 		});
 	</script>
 
