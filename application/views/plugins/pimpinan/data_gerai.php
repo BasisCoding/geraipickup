@@ -29,7 +29,7 @@
 		                            	url: '<?= base_url("pimpinan/Data_Gerai/update_gerai") ?>',
 		                            	type: 'GET',
 		                            	dataType: 'JSON',
-		                            	data:{id:id},
+		                            	data:{username:username},
 		                            	success:function (response) {
 		                            		if (response.status = 'Success') {
 		                            			noty({text: response.message, layout: 'topRight', type: 'success'});

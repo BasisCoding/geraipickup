@@ -62,7 +62,7 @@
 
 		public function update_gerai()
 		{
-		    $username		= $this->input->get('username');
+		    $username= $this->input->get('username');
 		    $check = $this->MasterModel->get_status($username)->status;
 		    if ($check == 1) {
 		    	$status = 0;
