@@ -79,29 +79,35 @@
 			$html = '';
 			$status = '';
 			
-	  		$pickup = $this->LaporanModel->get_pickup()->result();
-	  		echo $this->db->last_query($pickup);
-			foreach ($pickup as $pk) {
-	        	if ($pk->status_pickup == 0) {
-					$status = 'Belum Pickup';
-				}if ($pk->status_pickup == 1) {
-					$status = 'Proses Pickup';
-				}if ($pk->status_pickup == 2) {
-					$status = 'Proses Validasi';
-				}if ($pk->status_pickup == 3) {
-					$status = 'Selesai';
-				}
+	  		$pickup = $this->LaporanModel->get_pickup();
+	  		if ($pickup->num_rows() > 0) {
+		  		// echo $this->db->last_query($pickup);
+				foreach ($pickup->result() as $pk) {
+		        	if ($pk->status_pickup == 0) {
+						$status = 'Belum Pickup';
+					}if ($pk->status_pickup == 1) {
+						$status = 'Proses Pickup';
+					}if ($pk->status_pickup == 2) {
+						$status = 'Proses Validasi';
+					}if ($pk->status_pickup == 3) {
+						$status = 'Selesai';
+					}
 
-				$html .= '<tr role="row" class="odd">
-							<td>'.$pk->kode_pickup.'</td>
-							<td>'.$pk->nama_gerai.'</td>
-							<td>'.$pk->tgl_pickup.'</td>
-							<td>'.$pk->jenis_paket.'</td>
-							<td>'.$pk->jumlah_paket.'</td>
-							<td>'.$status.'</td>
-							<td>'.$pk->nama_kurir.'</td>
+					$html .= '<tr role="row" class="odd">
+								<td>'.$pk->kode_pickup.'</td>
+								<td>'.$pk->nama_gerai.'</td>
+								<td>'.$pk->tgl_pickup.'</td>
+								<td>'.$pk->jenis_paket.'</td>
+								<td>'.$pk->jumlah_paket.'</td>
+								<td>'.$status.'</td>
+								<td>'.$pk->nama_kurir.'</td>
+							</tr>';
+	        	}
+	        }else{
+	        	$html .= '<tr role="row" class="odd">
+							<td colspan="7" class="text-center">Tidak Ada Data</td>
 						</tr>';
-        	}
+	        }
 
         	echo $html;
 		}
