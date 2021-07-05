@@ -10,13 +10,18 @@
 			return $this->db->get();
 		}
 
-		function get_pickup($id_gerai)
+		function get_pickup()
 		{
-			$this->db->select('*, kurir.nama_lengkap as nama_kurir');
+			$this->db->select('pickup.*, kurir.nama_lengkap as nama_kurir, gerai.nama_gerai');
 			$this->db->join('gerai', 'gerai.id = pickup.id_gerai', 'left');	
 			$this->db->join('kurir', 'kurir.id = pickup.id_kurir', 'left');
+			if ($this->input->get('start_date') != NULL) {
+				$this->db->group_start();
+					$this->db->where('pickup.tgl_pickup >=', $this->input->get('start_date'));
+					$this->db->where('pickup.tgl_pickup <=', $this->input->get('end_date'));
+				$this->db->group_end();
+			}
 			$this->db->from('pickup');
-			$this->db->where('id_gerai', $id_gerai);
 
 			return $this->db->get();
 		}
