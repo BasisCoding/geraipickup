@@ -48,7 +48,9 @@
                                 	data-username="'.$gt->username.'"  
                                 	data-nama_lengkap="'.$gt->nama_lengkap.'"  
                                 	data-email="'.$gt->email.'"  
-                                	data-hp="'.$gt->hp.'"  
+                                	data-hp="'.$gt->hp.'" 
+                                	data-prov="'.$gt->prov.'" 
+                                	data-kota="'.$gt->kota.'" 
                                 	data-kec="'.$gt->kec.'" 
                                 	data-status="'.$gt->status.'"
                                 ><span class="fa fa-pencil"></span></button>
@@ -64,19 +66,6 @@
 			echo $html;
 		}
 		
-		public function password($length)
-		{
-			$str = '';
-			$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";	
-
-			$size = strlen( $chars );
-			for( $i = 0; $i < $length; $i++ ) {
-				$str .= $chars[ rand( 0, $size - 1 ) ];
-			}
-
-			return $str;
-		}
-
 		public function add_kurir()
 		{
 		    $email_penerima = $this->input->post('email');
@@ -115,7 +104,7 @@
 		    }else{
 			    $insert = $this->MasterModel->add_kurir($data_insert);
 			    
-			    if ($send) {
+			    if ($insert) {
 			    	$response = [
 			    	    'status' => 'Success',
 			    	    'message' => 'Data Berhasil Di Simpan',

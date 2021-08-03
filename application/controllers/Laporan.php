@@ -80,6 +80,7 @@
 			$status = '';
 			
 	  		$pickup = $this->LaporanModel->get_pickup();
+	  		echo $this->db->last_query($pickup);
 	  		if ($pickup->num_rows() > 0) {
 		  		// echo $this->db->last_query($pickup);
 				foreach ($pickup->result() as $pk) {

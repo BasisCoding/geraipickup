@@ -2,99 +2,68 @@
         
 	$(document).ready(function() {
 		show_kurir();
-		tampilProvinsi();
 
-	// Wilayah API
-		function tampilProvinsi() {
-			var provinsi = $('.provinsi');
-			provinsi.append('<option value="" disabled selected>Pilih Provinsi</option>');
+		// Wilayah API
+			$.getJSON('https://dev.farizdotid.com/api/daerahindonesia/provinsi', function(json, textStatus) {
 
-			fetch('http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json')
-			.then(
-				function(response) {
-					if (response.status !== 200) {  
-				        console.log('Looks like there was a problem. Status Code: ' + response.status);  
-				        return;  
-				      }
-
-				      // Examine the text in the response  
-				      response.json().then(function(data) {  
-				    	for (let i = 0; i < data.length; i++) {
-				          provinsi.append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
-				    	}    
-				      });  
-				}
-			).catch(function(err) {  
-			    console.error('Fetch Error -', err);  
+				$.each(json.provinsi, function(i, prov) {
+					var id = prov.id;
+					var nama = prov.nama;
+					$('.provinsi').append('<option value="'+id+'">'+nama+'</option>');
+				});
 			});
 
-			$('.kota').attr('disabled', true);
-			$('.kecamatan').attr('disabled', true);
-		}
+			function tampilKota(idArea, what) {
+				if (what == 'prov') {
+					if (idArea == "") {
+					   $('.kota').prop('disabled', true);
+					   return;
+					}
 
-		function tampilKota(idProv) {
-			var kota = $('.kota');
-			kota.append('<option value="" disabled selected>Pilih Kota</option>');
+					$('.kota').prop('disabled', false);
 
-			fetch('http://www.emsifa.com/api-wilayah-indonesia/api/regencies/'+idProv+'.json')
-			.then(
-				function(response) {
-					if (response.status !== 200) {  
-				        console.log('Looks like there was a problem. Status Code: ' + response.status);  
-				        return;  
-				      }
+					$(".kota").html("");
+					  
+					$.getJSON('https://dev.farizdotid.com/api/daerahindonesia/kota',{id_provinsi: idArea}, function(json, textStatus) {
 
-				      // Examine the text in the response  
-				      response.json().then(function(data) { 
-				    	for (let i = 0; i < data.length; i++) {
-				          kota.append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
-				    	}    
-				      });  
+						$.each(json.kota_kabupaten, function(i, kab) {
+							var id = kab.id;
+							var nama = kab.nama;
+							$(".kota").append('<option value="'+id+'">'+nama+'</option>');
+						});
+					});
+				}else if (what == 'kota') {
+					if (idArea == "") {
+					   $('.kecamatan').prop('disabled', true);
+					   return;
+					}
+
+					$('.kecamatan').prop('disabled', false);
+
+					$(".kecamatan").html("");
+					  
+					$.getJSON('https://dev.farizdotid.com/api/daerahindonesia/kecamatan',{id_kota: idArea}, function(json, textStatus) {
+
+						$.each(json.kecamatan, function(i, kec) {
+							var id = kec.id;
+							var nama = kec.nama;
+							$(".kecamatan").append('<option value="'+id+'">'+nama+'</option>');
+						});
+					});
 				}
-			).catch(function(err) {  
-			    console.error('Fetch Error -', err);  
+			}
+
+			$('body').on('change', '.provinsi', function() {
+				var idProv = $(this).val();
+				tampilKota(idProv, "prov");
 			});
-		}
 
-		function tampilKecamatan(idKota) {
-			var kecamatan = $('.kecamatan');
-			kecamatan.append('<option value="" disabled selected>Pilih Kecamatan</option>');
-
-			fetch('http://www.emsifa.com/api-wilayah-indonesia/api/districts/'+idKota+'.json')
-			.then(
-				function(response) {
-					if (response.status !== 200) {  
-				        console.log('Looks like there was a problem. Status Code: ' + response.status);  
-				        return;  
-				      }
-
-				      // Examine the text in the response  
-				      response.json().then(function(data) {  
-				    
-				    	for (let i = 0; i < data.length; i++) {
-				          kecamatan.append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
-				    	}    
-				      });  
-				}
-			).catch(function(err) {  
-			    console.error('Fetch Error -', err);  
+			$('body').on('change', '.kota', function() {
+				var idKota = $(this).val();
+				tampilKota(idKota, "kota");
 			});
-		}
-		
-		$('.provinsi').change(function() {
-			var idProv = $(this).children('option:selected').val();
-			tampilKota(idProv);
 
-			$('.kota').attr('disabled', false);
-		});
-
-		$('.kota').change(function() {
-			var idKota = $(this).children('option:selected').val();
-			tampilKecamatan(idKota);
-
-			$('.kecamatan').attr('disabled', false);
-		});
-	// Wilayah API
+		// Wilayah API
 
 		function show_kurir() {
 			$.ajax({
@@ -153,7 +122,6 @@
 				var id 				= $(this).attr('data-id');
 				var username 		= $(this).attr('data-username');
 				var email 			= $(this).attr('data-email');
-				var alamat 			= $(this).attr('data-alamat');
 				var nama_lengkap 	= $(this).attr('data-nama_lengkap');
 				var hp 				= $(this).attr('data-hp');
 				var idProv 			= $(this).attr('data-prov');
@@ -163,10 +131,19 @@
 
 				$('[name="username_update"]').val(username);
 				$('[name="email_update"]').val(email);
-				$('[name="alamat_update"]').val(alamat);
 				$('[name="nama_lengkap_update"]').val(nama_lengkap);
 				$('[name="hp_update"]').val(hp);
-		
+				
+				setTimeout(function() {
+					$('[name="prov_update"]').val(idProv).trigger('change');
+					setTimeout(function() {
+						$('[name="kota_update"]').val(kota).trigger('change');
+						setTimeout(function() {
+							$('[name="kec_update"]').val(kec).trigger('change');
+						}, 2000);
+					}, 1500);
+				}, 1000);
+				
 
 				$('#modal_update_kurir').modal('show');
 			});

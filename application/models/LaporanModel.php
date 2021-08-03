@@ -17,8 +17,8 @@
 			$this->db->join('kurir', 'kurir.id = pickup.id_kurir', 'left');
 			if ($this->input->get('start_date') != NULL) {
 				$this->db->group_start();
-					$this->db->where('pickup.tgl_pickup >=', $this->input->get('start_date'));
-					$this->db->where('pickup.tgl_pickup <=', $this->input->get('end_date'));
+					$this->db->where('DATE(pickup.tgl_pickup) >=', date('Y-m-d', strtotime($this->input->get('start_date'))));
+					$this->db->where('DATE(pickup.tgl_pickup) <=', date('Y-m-d', strtotime($this->input->get('end_date'))));
 				$this->db->group_end();
 			}
 			$this->db->from('pickup');

@@ -134,38 +134,24 @@
 		
 		public function update_gerai()
 		{
-		    $username		= $this->input->post('username_update');
-		    $nama_lengkap	= $this->input->post('nama_lengkap_update');
-		    $nama_gerai		= $this->input->post('nama_gerai_update');
-		    $hp				= $this->input->post('hp_update'); 
-		    $password		= hash('sha512', $this->input->post('password_update').config_item('encryption_key'));
-		    $telepon		= $this->input->post('telepon_update');
-		    $alamat			= $this->input->post('alamat_update');
-		    $prov			= $this->input->post('prov_update');
-		    $kota			= $this->input->post('kota_update');
-		    $kec			= $this->input->post('kec_update');
-		    $lat			= $this->input->post('lat_update');
-		    $long			= $this->input->post('long_update');
-		    $created_at		= date('Y-m-d H:i:s');
-		    $created_by		= $this->session->userdata('id');
+		    $data['username']= $this->input->post('username_update');
+		    $data['nama_lengkap']	= $this->input->post('nama_lengkap_update');
+		    $data['nama_gerai']		= $this->input->post('nama_gerai_update');
+		    $data['hp']				= $this->input->post('hp_update'); 
+		    if ($this->input->post('password_update') != '') {
+		   		$data['password'] = hash('sha512', $this->input->post('password_update').config_item('encryption_key'));
+		    }
+		    $data['telepon']		= $this->input->post('telepon_update');
+		    $data['alamat']			= $this->input->post('alamat_update');
+		    $data['prov']			= $this->input->post('prov_update');
+		    $data['kota']			= $this->input->post('kota_update');
+		    $data['kec']			= $this->input->post('kec_update');
+		    $data['lat']			= $this->input->post('lat_update');
+		    $data['long']			= $this->input->post('long_update');
+		    $data['created_at']		= date('Y-m-d H:i:s');
+		    $data['created_by']		= $this->session->userdata('id');
 
-		    $data = array(
-		    	'nama_lengkap' => $nama_lengkap,
-		    	'nama_gerai' => $nama_gerai,
-		    	'hp' => $hp,
-		    	'password' => $password,
-		    	'telepon' => $telepon,
-		    	'alamat' => $alamat,
-		    	'lat' => $lat,
-		    	'prov' => $prov,
-		    	'kota' => $kota,
-		    	'kec' => $kec,
-		    	'long' => $long,
-		    	'created_at'	=> $created_at,
-		    	'created_by'	=> $created_by
-		    );
-
-		    $update = $this->MasterModel->update_gerai($username, $data);
+		    $update = $this->MasterModel->update_gerai($data['username'], $data);
 		    if ($update) {
 		    	$response = [
 		    	    'status' => 'Success',
