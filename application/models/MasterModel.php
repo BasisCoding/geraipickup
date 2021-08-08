@@ -9,9 +9,9 @@
 			return $this->db->get('gerai')->result();
 		}
 
-		function get_status($username)
+		function get_status($username, $table)
 		{
-			return $this->db->get_where('gerai', array('username' => $username))->row();
+			return $this->db->get_where($table, array('username' => $username))->row();
 		}
 
 		function validasi($username, $email, $table)
