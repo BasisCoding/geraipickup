@@ -75,6 +75,7 @@ $route['translate_uri_dashes'] = FALSE;
 // Route Kurir
 	$route['pimpinan'] = 'Dashboard';
 	$route['data_gerai_pimpinan'] = 'pimpinan/Data_Gerai';
+	$route['data_kurir_pimpinan'] = 'pimpinan/Data_Kurir';
 // End Route Kurir
 
 // Route Laporan

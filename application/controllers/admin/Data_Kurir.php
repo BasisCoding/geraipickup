@@ -89,7 +89,7 @@
 		    	'kec' => $kec,
 		    	'password'	=> hash('sha512', $password.config_item('encryption_key')),
 		    	'level'	=> 2,
-		    	'status'	=> 1,
+		    	'status'	=> 0,
 		    	'created_at'	=> $created_at,
 		    	'created_by'	=> $created_by
 		    );
