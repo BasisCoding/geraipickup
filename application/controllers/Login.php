@@ -52,7 +52,7 @@
 
 		public function create_password()
 		{
-			$password 	= hash('sha512', 'pimpinan'.config_item('encryption_key'));
+			$password 	= hash('sha512', 'gerai'.config_item('encryption_key'));
 			echo $password;
 		}
 

@@ -50,7 +50,7 @@
 				$html .= '<tr role="row" class="odd">
 							<td>'.$gt->kode_pickup.'</td>
 							<td>'.$gt->nama_gerai.'</td>
-							<td>'.$gt->hp.'</td>
+							<td>'.$gt->tgl_pickup.'</td>
 							<td>'.$gt->jenis_paket.'</td>
 							<td>'.$gt->jumlah_paket.'</td>
 							<td>'.$gt->alamat.'</td>
